@@ -100,6 +100,22 @@
     .skill-logo { display: grid; place-items: center; width: clamp(38px, 4.2vw, 56px); height: clamp(38px, 4.2vw, 56px); flex: 0 0 auto; filter: drop-shadow(0 0 10px rgba(130,220,255,.14)); }
     .skill-logo img { width: 100%; height: 100%; object-fit: contain; }
     .skill-logo img.invert-logo { filter: invert(1) grayscale(1) brightness(1.4); }
+    #tech-stack { overflow: hidden; padding-top: 76px; }
+    .tech-stack-content { max-width: 980px; margin: -8px auto 0; position: relative; }
+    .tech-stack-copy { position: relative; z-index: 3; width: min(720px, 84%); margin: 0 auto; text-align: center; text-shadow: 0 2px 12px rgba(0,0,0,.72); }
+    .tech-stack-title { font-family: 'Roboto', Arial, sans-serif; font-size: clamp(1.35rem, 2.6vw, 2.05rem); line-height: 1.05; font-weight: 900; color: #fff; margin-bottom: 16px; }
+    .tech-stack-text { max-width: 720px; margin: 0 auto; color: var(--muted); font-size: clamp(.98rem, 1.35vw, 1.12rem); line-height: 1.75; font-weight: 500; }
+    .tech-orbit-stage { position: relative; z-index: 2; min-height: clamp(340px, 38vw, 430px); overflow: visible; display: grid; place-items: center; perspective: 900px; }
+    .tech-orbit-stage::before { content: ''; position: absolute; left: 50%; top: 50%; width: min(60vw, 560px); height: min(32vw, 280px); transform: translate(-50%, -50%); border-radius: 50%; background: radial-gradient(ellipse, rgba(120,220,255,.16), rgba(120,220,255,.05) 42%, transparent 70%); filter: blur(2px); }
+    .tech-arc { --arc-size: clamp(470px, 57vw, 690px); --node-radius: calc(var(--arc-size) * .5); position: absolute; left: 50%; top: 50%; width: var(--arc-size); aspect-ratio: 1; transform: translate(-50%, -50%) rotate(31deg) scaleY(.36); border-radius: 50%; border: 1px solid rgba(150,220,255,.34); filter: drop-shadow(0 0 18px rgba(90,200,255,.16)); z-index: 4; pointer-events: none; }
+    .tech-arc.inner { --arc-size: clamp(450px, 54vw, 650px); --node-radius: calc(var(--arc-size) * .5); transform: translate(-50%, -50%) rotate(-31deg) scaleY(.36); border-color: rgba(255,255,255,.28); opacity: .88; }
+    .tech-node { position: absolute; left: 50%; top: 50%; width: 42px; height: 42px; margin: -21px; display: grid; place-items: center; border-radius: 50%; background: rgba(2,8,23,.9); border: 1px solid rgba(180,230,255,.22); color: #fff; font-family: 'Roboto', Arial, sans-serif; font-size: .64rem; font-weight: 900; letter-spacing: .2px; box-shadow: 0 10px 24px rgba(0,0,0,.26), inset 0 1px 0 rgba(255,255,255,.12), 0 0 18px rgba(120,220,255,.13); transform: rotate(var(--angle)) translateX(var(--node-radius)) rotate(calc(-1 * var(--angle))) scaleY(2.78); }
+    .tech-node img { width: 68%; height: 68%; object-fit: contain; }
+    .tech-node > img, .tech-node > .tech-label { display: block; }
+    .tech-arc.outer .tech-node { animation: techNodeOrbitForward 24s linear infinite; }
+    .tech-arc.inner .tech-node { animation: techNodeOrbitReverse 28s linear infinite; }
+    .tech-node .invert-logo, .tech-node img.invert-logo { filter: invert(1) grayscale(1) brightness(1.5); }
+    .tech-arc.inner .tech-node { width: 38px; height: 38px; margin: -19px; font-size: .58rem; }
 
     .timeline { position: relative; padding-left: 54px; }
     .timeline::before { content: ''; position: absolute; left: 18px; top: 8px; bottom: 0; width: 1px; background: linear-gradient(180deg, var(--accent), var(--accent3), transparent); }
@@ -164,6 +180,20 @@
     @keyframes codeCascade { from { transform: translateY(0); } to { transform: translateY(-46%); } }
     @keyframes skillScrollLeft { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     @keyframes skillScrollRight { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+    @keyframes techOrbitWrap { from { rotate: 0deg; } to { rotate: 360deg; } }
+    @keyframes techOrbitWrapReverse { from { rotate: 360deg; } to { rotate: 0deg; } }
+    @keyframes techArcSpin { from { rotate: 0deg; } to { rotate: 360deg; } }
+    @keyframes techArcSpinReverse { from { rotate: 360deg; } to { rotate: 0deg; } }
+    @keyframes techNodeCounterOuter { from { rotate: 0deg; } to { rotate: -360deg; } }
+    @keyframes techNodeCounterInner { from { rotate: 0deg; } to { rotate: 360deg; } }
+    @keyframes techNodeOrbitForward {
+      from { transform: rotate(var(--angle)) translateX(var(--node-radius)) rotate(calc(-1 * var(--angle))) scaleY(2.78); }
+      to { transform: rotate(calc(var(--angle) + 360deg)) translateX(var(--node-radius)) rotate(calc(-1 * (var(--angle) + 360deg))) scaleY(2.78); }
+    }
+    @keyframes techNodeOrbitReverse {
+      from { transform: rotate(var(--angle)) translateX(var(--node-radius)) rotate(calc(-1 * var(--angle))) scaleY(2.78); }
+      to { transform: rotate(calc(var(--angle) - 360deg)) translateX(var(--node-radius)) rotate(calc(-1 * (var(--angle) - 360deg))) scaleY(2.78); }
+    }
     @keyframes bounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(8px); } }
 
     .reveal { opacity: 0; transform: translateY(40px); transition: opacity .7s ease, transform .7s ease; }
@@ -179,6 +209,8 @@
       section { padding: 72px 6vw; }
       #hero { padding-right: 6vw; }
       #terminal-wrap { --visual-opacity: .58; width: min(54vw, 350px); right: -58px; top: 31%; }
+      .tech-stack-copy { width: min(620px, 82%); }
+      .tech-orbit-stage { min-height: 360px; }
       .skills-marquees { gap: 34px; }
     }
     @media (max-width: 600px) {
@@ -186,6 +218,14 @@
       .nav-logo { font-size: 0.68rem; letter-spacing: 1px; }
       #skills { min-height: 58vh; }
       .skills-heading { margin-bottom: 42px; }
+      .tech-stack-content { margin-top: 0; }
+      .tech-stack-copy { width: min(340px, 86%); }
+      .tech-stack-text { font-size: .86rem; line-height: 1.65; }
+      .tech-orbit-stage { min-height: 330px; }
+      .tech-arc { --arc-size: min(76vw, 300px); }
+      .tech-arc.inner { --arc-size: min(58vw, 228px); }
+      .tech-node { width: 36px; height: 36px; margin: -18px; font-size: .55rem; }
+      .tech-arc.inner .tech-node { width: 32px; height: 32px; margin: -16px; }
       .skills-marquees { gap: 28px; }
       .skills-track { gap: 28px; animation-duration: 22s; }
       .timeline { padding-left: 48px; }
@@ -451,6 +491,45 @@ service.scale()</pre></div>
       <p class="project-desc">Solo-built a multimodal AI platform at a hackathon with Claude Vision for photo-to-intake field extraction, pgvector semantic search across case notes, and LLM-powered smart nudges that auto-detect follow-ups; deployed on Vercel with FastAPI and Supabase PostgreSQL.</p>
       <div class="project-stack">
         <span class="stack-tag">#Next.js</span><span class="stack-tag">#FastAPI</span><span class="stack-tag">#Supabase</span><span class="stack-tag">#LangChain</span><span class="stack-tag">#Claude Vision</span><span class="stack-tag">#pgvector</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECH STACK -->
+<section id="tech-stack">
+  <div class="section-header reveal">
+    <h2 class="section-title">Tech Stack</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="tech-stack-content reveal">
+    <div class="tech-orbit-stage" aria-label="Animated tech stack logos">
+      <div class="tech-stack-copy">
+        <p class="tech-stack-text">Building intelligent applications with AI, machine learning, and scalable backend systems. Experienced in LLMs, NLP, RAG pipelines, cloud infrastructure, and full-stack development.</p>
+      </div>
+      <div class="tech-arc outer" aria-hidden="true">
+        <span class="tech-node" style="--angle: 0deg;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="" /></span>
+        <span class="tech-node" style="--angle: 40deg;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="" /></span>
+        <span class="tech-node" style="--angle: 80deg;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="" /></span>
+        <span class="tech-node" style="--angle: 120deg;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg" alt="" /></span>
+        <span class="tech-node" style="--angle: 160deg;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" alt="" /></span>
+        <span class="tech-node" style="--angle: 200deg;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="" /></span>
+        <span class="tech-node" style="--angle: 240deg;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="" /></span>
+        <span class="tech-node" style="--angle: 280deg;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="" /></span>
+        <span class="tech-node" style="--angle: 320deg;"><img class="invert-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="" /></span>
+      </div>
+      <div class="tech-arc inner" aria-hidden="true">
+        <span class="tech-node" style="--angle: 16deg;"><span class="tech-label">ML</span></span>
+        <span class="tech-node" style="--angle: 49deg;"><span class="tech-label">DL</span></span>
+        <span class="tech-node" style="--angle: 82deg;"><span class="tech-label">LLM</span></span>
+        <span class="tech-node" style="--angle: 115deg;"><span class="tech-label">LC</span></span>
+        <span class="tech-node" style="--angle: 148deg;"><span class="tech-label">HF</span></span>
+        <span class="tech-node" style="--angle: 181deg;"><span class="tech-label">RAG</span></span>
+        <span class="tech-node" style="--angle: 214deg;"><span class="tech-label">NLP</span></span>
+        <span class="tech-node" style="--angle: 247deg;"><span class="tech-label">VEC</span></span>
+        <span class="tech-node" style="--angle: 280deg;"><span class="tech-label">REST</span></span>
+        <span class="tech-node" style="--angle: 313deg;"><span class="tech-label">PINE</span></span>
+        <span class="tech-node" style="--angle: 346deg;"><span class="tech-label">MS</span></span>
       </div>
     </div>
   </div>
