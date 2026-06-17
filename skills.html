@@ -171,7 +171,7 @@
     .skill-card { min-height: 170px; display: none; }
     .skill-card.is-visible { display: flex; }
     .demos-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 26px; }
-    .demo-card, .cube-card {
+    .demo-card, .network-card {
       --rx: 0deg;
       --ry: 0deg;
       --tx: 0px;
@@ -241,50 +241,30 @@
     .variable { color: #d6d6df; }
     .cursor { display: inline-block; width: 8px; height: 1.05em; background: #ffffff; margin-left: 3px; vertical-align: -2px; box-shadow: 0 0 12px rgba(255,255,255,.55); animation: blink 1s steps(2) infinite; }
     @keyframes blink { 50% { opacity: 0; } }
-    .cube-card { margin-top: 34px; border-color: rgba(110,205,255,.24); box-shadow: 0 0 38px rgba(90,190,255,.12), 0 22px 58px rgba(0,0,0,.26); }
-    .cube-header-extra { margin-left: auto; color: #656b83; font-family: 'Roboto Mono', monospace; font-size: .78rem; border: 1px solid var(--line); border-radius: 6px; padding: 8px 12px; }
-    .cube-stage {
+    .network-card { margin-top: 34px; border: 1px solid rgba(110,205,255,.24); border-radius: 20px; overflow: hidden; background: rgba(4,6,13,.78); box-shadow: 0 0 38px rgba(90,190,255,.12), 0 22px 58px rgba(0,0,0,.26); }
+    .network-header-extra { margin-left: auto; color: #656b83; font-family: 'Roboto Mono', monospace; font-size: .78rem; border: 1px solid var(--line); border-radius: 6px; padding: 8px 12px; }
+    .network-stage {
       height: 420px;
       display: grid;
       place-items: center;
       position: relative;
-      background: radial-gradient(circle at 50% 80%, rgba(80,190,255,.08), transparent 28%), #02040a;
-      perspective: 1000px;
+      background: radial-gradient(circle at 50% 52%, rgba(80,190,255,.12), transparent 34%), radial-gradient(circle at 18% 22%, rgba(110,120,255,.12), transparent 28%), #02040a;
       overflow: hidden;
-      cursor: grab;
-      touch-action: none;
       user-select: none;
     }
-    .cube-stage.dragging { cursor: grabbing; }
-    .cube-stage::before { content: ''; position: absolute; inset: auto 18% 34px; height: 100px; background: repeating-linear-gradient(90deg, rgba(70,150,220,.08) 0 1px, transparent 1px 50px), repeating-linear-gradient(0deg, rgba(70,150,220,.08) 0 1px, transparent 1px 50px); transform: rotateX(68deg); transform-origin: center bottom; opacity: .45; }
-    .cube {
-      width: 160px;
-      height: 160px;
-      position: relative;
-      transform-style: preserve-3d;
-      animation: cubeSpin 11s linear infinite;
-      will-change: transform;
-    }
-    .cube.paused { animation-play-state: paused; }
-    .cube-face {
-      position: absolute;
-      inset: 0;
-      border: 1px solid rgba(120,220,255,.38);
-      background: rgba(9,18,36,.16);
-      box-shadow: inset 0 0 28px rgba(120,220,255,.07), 0 0 12px rgba(120,220,255,.08);
-      opacity: .88;
-    }
-    .cube.wireframe .cube-face { background: transparent; border-color: rgba(255,255,255,.48); box-shadow: none; }
-    .cube-face:nth-child(1) { transform: translateZ(80px); }
-    .cube-face:nth-child(2) { transform: rotateY(90deg) translateZ(80px); }
-    .cube-face:nth-child(3) { transform: rotateY(180deg) translateZ(80px); }
-    .cube-face:nth-child(4) { transform: rotateY(-90deg) translateZ(80px); }
-    .cube-face:nth-child(5) { transform: rotateX(90deg) translateZ(80px); }
-    .cube-face:nth-child(6) { transform: rotateX(-90deg) translateZ(80px); }
-    @keyframes cubeSpin { from { transform: rotateX(-18deg) rotateY(0deg); } to { transform: rotateX(-18deg) rotateY(360deg); } }
-    .cube-controls { position: absolute; left: 50%; bottom: 34px; transform: translateX(-50%); display: flex; gap: 14px; }
-    .cube-btn { border: 1px solid rgba(110,205,255,.26); border-radius: 9px; color: var(--muted); background: rgba(7,11,22,.82); padding: 12px 28px; font: inherit; font-weight: 800; cursor: pointer; transition: color .2s, border-color .2s, background .2s; }
-    .cube-btn:hover { color: #fff; border-color: rgba(110,205,255,.52); background: rgba(80,180,255,.08); }
+    .network-stage::before { content: ''; position: absolute; inset: auto 16% 28px; height: 100px; background: repeating-linear-gradient(90deg, rgba(70,150,220,.08) 0 1px, transparent 1px 50px), repeating-linear-gradient(0deg, rgba(70,150,220,.08) 0 1px, transparent 1px 50px); transform: rotateX(68deg); transform-origin: center bottom; opacity: .42; }
+    .node-network { position: relative; z-index: 1; width: min(92%, 900px); height: min(82%, 420px); overflow: visible; }
+    .network-link { stroke: rgba(110,205,255,.34); stroke-width: 1.6; filter: drop-shadow(0 0 5px rgba(90,190,255,.3)); }
+    .network-node { cursor: grab; filter: url(#node-glow); }
+    .network-node.dragging { cursor: grabbing; }
+    .network-node circle { fill: rgba(25,80,150,.95); stroke: rgba(230,250,255,.86); stroke-width: 2; }
+    .network-node.core circle { fill: rgba(90,170,255,.98); stroke: rgba(255,255,255,.94); }
+    .network-node text { fill: #fff; font-family: 'Roboto Mono', monospace; font-size: 13px; font-weight: 800; text-anchor: middle; dominant-baseline: middle; pointer-events: none; letter-spacing: .3px; }
+    .network-card.pulsing .network-link { animation: linkPulse 1.2s ease-in-out infinite; }
+    .network-controls { position: absolute; left: 50%; bottom: 34px; transform: translateX(-50%); display: flex; gap: 14px; z-index: 2; }
+    .network-btn { border: 1px solid rgba(110,205,255,.26); border-radius: 9px; color: var(--muted); background: rgba(7,11,22,.82); padding: 12px 28px; font: inherit; font-weight: 800; cursor: pointer; transition: color .2s, border-color .2s, background .2s; }
+    .network-btn:hover { color: #fff; border-color: rgba(110,205,255,.52); background: rgba(80,180,255,.08); }
+    @keyframes linkPulse { 0%, 100% { stroke-opacity: .34; } 50% { stroke-opacity: .92; stroke-width: 2.4; } }
     .footer-fade { height: 140px; background: linear-gradient(180deg, transparent, rgba(2,8,23,.9)); }
     .reveal-up { opacity: 0; transform: translateY(32px); transition: opacity .7s ease, transform .7s ease; }
     .reveal-up.visible { opacity: 1; transform: translateY(0); }
@@ -304,13 +284,13 @@
       .stats { grid-template-columns: 1fr; gap: 18px; }
       .stat-divider { display: none; }
       .terminal-header { align-items: flex-start; flex-wrap: wrap; padding: 18px; }
-      .terminal-tool, .cube-header-extra { margin-left: 0; }
+      .terminal-tool, .network-header-extra { margin-left: 0; }
       .code-body { min-height: 260px; font-size: .74rem; grid-template-columns: 42px 1fr; }
       .code-lines { padding: 20px 16px; }
       .line-numbers { padding: 20px 10px; }
-      .cube-stage { height: 330px; }
-      .cube-controls { width: calc(100% - 32px); justify-content: center; flex-wrap: wrap; }
-      .cube-btn { padding: 10px 16px; }
+      .network-stage { height: 330px; }
+      .network-controls { width: calc(100% - 32px); justify-content: center; flex-wrap: wrap; }
+      .network-btn { padding: 10px 16px; }
     }
   </style>
 </head>
@@ -322,7 +302,7 @@
     <div class="container">
       <div class="badge reveal-up">Skills & Expertise</div>
       <h1 class="reveal-up" data-delay="100">Professional<br><span class="title-gradient">Skills &amp; Tools</span></h1>
-      <p class="hero-copy reveal-up" data-delay="200">Comprehensive showcase of technical expertise, development capabilities, and interactive demonstrations built around AI, automation, and full-stack engineering.</p>
+      <p class="hero-copy reveal-up" data-delay="200">A focused look at the tools, languages, and engineering patterns I use to build AI products, automation workflows, and full-stack systems.</p>
       <div class="stats reveal-up" data-delay="300">
         <div><span class="stat-num" data-count="24">0</span><span class="stat-label">Tools</span></div>
         <span class="stat-divider"></span>
@@ -338,7 +318,7 @@
       <div class="section-header reveal-up">
         <span class="section-index">01</span>
         <h2 class="section-title">Development Tools</h2>
-        <p class="section-desc">The environment that powers my workflow</p>
+        <p class="section-desc">Tools I use to design, debug, automate, and ship reliable software.</p>
       </div>
       <div class="tools-grid" id="tools-grid"></div>
     </div>
@@ -349,7 +329,7 @@
       <div class="section-header reveal-up">
         <span class="section-index">02</span>
         <h2 class="section-title">Technical Skills</h2>
-        <p class="section-desc">Languages, frameworks, and domains I work in</p>
+        <p class="section-desc">Languages, frameworks, data tools, and AI systems I use across projects.</p>
       </div>
       <div class="skill-tabs reveal-up" id="skill-tabs">
         <button class="skill-tab active" data-filter="all">All</button>
@@ -367,24 +347,29 @@
       <div class="section-header reveal-up">
         <span class="section-index">03</span>
         <h2 class="section-title">Interactive Code Demos</h2>
-        <p class="section-desc">Live syntax across languages - watch it type itself</p>
+        <p class="section-desc">Small implementation examples that type in as you scroll.</p>
       </div>
       <div class="demos-grid" id="demos-grid"></div>
-      <div class="cube-card reveal-up">
+      <div class="network-card reveal-up">
         <div class="terminal-header">
           <div class="traffic"><span></span><span></span><span></span></div>
-          <div class="terminal-title"><i class="fa-solid fa-cube"></i> Interactive 3D Cube</div>
-          <div class="cube-header-extra"><i class="fa-solid fa-arrow-pointer"></i> Drag to rotate · Scroll to zoom</div>
+          <div class="terminal-title"><i class="fa-solid fa-diagram-project"></i> Interactive Node Network</div>
+          <div class="network-header-extra"><i class="fa-solid fa-arrow-pointer"></i> Drag nodes · Watch links adjust</div>
         </div>
-        <div class="cube-stage">
-          <div class="cube" id="cube">
-            <div class="cube-face"></div><div class="cube-face"></div><div class="cube-face"></div>
-            <div class="cube-face"></div><div class="cube-face"></div><div class="cube-face"></div>
-          </div>
-          <div class="cube-controls">
-            <button class="cube-btn" id="pause-cube"><i class="fa-solid fa-pause"></i> Pause</button>
-            <button class="cube-btn" id="wire-cube"><i class="fa-solid fa-table-cells"></i> Wireframe</button>
-            <button class="cube-btn" id="reset-cube"><i class="fa-solid fa-rotate-right"></i> Reset</button>
+        <div class="network-stage" id="network-stage">
+          <svg class="node-network" id="node-network" viewBox="0 0 900 420" role="img" aria-label="Draggable connected technology nodes">
+            <defs>
+              <filter id="node-glow" x="-60%" y="-60%" width="220%" height="220%">
+                <feGaussianBlur stdDeviation="6" result="blur" />
+                <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+              </filter>
+            </defs>
+            <g class="network-links"></g>
+            <g class="network-nodes"></g>
+          </svg>
+          <div class="network-controls">
+            <button class="network-btn" id="pulse-network"><i class="fa-solid fa-wave-square"></i> Pulse</button>
+            <button class="network-btn" id="reset-network"><i class="fa-solid fa-rotate-right"></i> Reset</button>
           </div>
         </div>
       </div>
@@ -407,13 +392,13 @@ const skills = [
   ['MongoDB','https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg','databases'], ['MySQL','https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg','databases'], ['APIs','API','databases'], ['DSA','DSA','databases']
 ];
 const demos = [
-  { title:'Python', tool:'Python 3.11', lines:[['# AI inference helper','comment'],['def predict(features):','function'],['    scores = model(features)','variable'],['    return max(scores)','keyword'],['pipeline.run(batch)','normal']] },
-  { title:'JavaScript', tool:'ES2024', lines:[['// Async data request','comment'],['const fetchCases = async () => {','function'],['  const res = await fetch(url);','keyword'],['  return await res.json();','keyword'],['};','normal']] },
-  { title:'C++', tool:'C++17', lines:[['#include <iostream>','keyword'],['int main() {','function'],['  std::cout << "Hello";','normal'],['  return 0;','keyword'],['}','normal']] },
-  { title:'React', tool:'React 18', lines:[['import { useState } from "react";','keyword'],['export function Toggle() {','function'],['  const [on, setOn] = useState(false);','variable'],['  return <button>{on ? "ON" : "OFF"}</button>;','string'],['}','normal']] },
-  { title:'HTML / CSS', tool:'CSS3', lines:[['/* Glass card */','comment'],['.card {','keyword'],['  backdrop-filter: blur(16px);','normal'],['  background: rgba(255,255,255,.08);','string'],['}','keyword']] },
-  { title:'SQL', tool:'MySQL 8', lines:[['-- Revenue by segment','comment'],['SELECT user_id, SUM(total)','keyword'],['FROM orders','keyword'],['GROUP BY user_id','keyword'],['ORDER BY SUM(total) DESC;','keyword']] },
-  { title:'TypeScript', tool:'TS 5.4', lines:[['// Typed API wrapper','comment'],['interface ApiResponse<T> {','keyword'],['  data: T;','variable'],['  status: number;','variable'],['}','normal']] }
+  { title:'Python', tool:'Python 3.11', lines:[['# score wireless power samples','comment'],['def estimate_draw(rsrp, sinr, traffic):','function'],['    radio = model.transform([rsrp, sinr])','variable'],['    return regressor.predict(radio + traffic)','keyword'],['power_lab.run(stream=True)','normal']] },
+  { title:'JavaScript', tool:'ES2024', lines:[['// stream chart updates','comment'],['const updateViz = async profile => {','function'],['  const packet = await api.sample(profile);','keyword'],['  chart.push(packet.watts);','variable'],['};','normal']] },
+  { title:'C++', tool:'C++17', lines:[['// device provisioning check','comment'],['for (auto& device : fleet) {','keyword'],['  if (!device.configured())','normal'],['    scheduler.enqueue(device.id);','function'],['}','normal']] },
+  { title:'React', tool:'React 18', lines:[['const [question, setQuestion] = useState("");','variable'],['return <ChatPanel','keyword'],['  source="portfolio-kb"','string'],['  onAsk={answerFromProfile}','function'],['/>;','normal']] },
+  { title:'HTML / CSS', tool:'CSS3', lines:[['/* navy glass surface */','comment'],['.panel {','keyword'],['  background: rgba(6,18,37,.86);','string'],['  border: 1px solid rgba(255,255,255,.14);','normal'],['}','keyword']] },
+  { title:'SQL', tool:'PostgreSQL', lines:[['-- retrieve similar case notes','comment'],['SELECT title, score','keyword'],['FROM match_documents(:embedding)','keyword'],['ORDER BY score DESC','keyword'],['LIMIT 5;','keyword']] },
+  { title:'TypeScript', tool:'TS 5.4', lines:[['type Metric = "rsrp" | "sinr" | "watts";','keyword'],['const normalize = (value: number) =>','function'],['  Math.max(0, Math.min(1, value));','normal'],['export { normalize };','keyword']] }
 ];
 function makeCard(name, icon, kind, extra = '', logoClass = '') {
   if (kind === 'skill') {
@@ -597,91 +582,83 @@ function drawBg() {
   requestAnimationFrame(drawBg);
 }
 drawBg();
-const cube = document.getElementById('cube');
-const cubeStage = document.querySelector('.cube-stage');
-let cubeRotX = -18;
-let cubeRotY = 0;
-let cubeScale = 1;
-let cubeDragging = false;
-let cubeLastX = 0;
-let cubeLastY = 0;
+const networkSvg = document.getElementById('node-network');
+const nodeLayer = networkSvg.querySelector('.network-nodes');
+const linkLayer = networkSvg.querySelector('.network-links');
+const initialNodes = [
+  { id: 'AI', x: 450, y: 210, r: 42, core: true },
+  { id: 'RAG', x: 285, y: 120, r: 31 },
+  { id: 'API', x: 610, y: 112, r: 30 },
+  { id: 'ML', x: 245, y: 285, r: 32 },
+  { id: 'DB', x: 660, y: 285, r: 31 },
+  { id: 'UI', x: 450, y: 335, r: 29 },
+  { id: '5G', x: 450, y: 80, r: 28 }
+];
+const links = [
+  ['AI','RAG'], ['AI','API'], ['AI','ML'], ['AI','DB'], ['AI','UI'], ['AI','5G'],
+  ['RAG','DB'], ['API','UI'], ['ML','5G'], ['DB','UI'], ['RAG','ML']
+];
+let nodes = initialNodes.map(node => ({ ...node }));
+let activeNode = null;
 
-function updateCubeTransform() {
-  cube.style.animation = 'none';
-  cube.style.transform = `rotateX(${cubeRotX}deg) rotateY(${cubeRotY}deg) scale(${cubeScale})`;
+function drawNetwork() {
+  linkLayer.innerHTML = links.map(([from, to]) => {
+    const a = nodes.find(node => node.id === from);
+    const b = nodes.find(node => node.id === to);
+    return `<line class="network-link" x1="${a.x}" y1="${a.y}" x2="${b.x}" y2="${b.y}" />`;
+  }).join('');
+  nodeLayer.innerHTML = nodes.map(node => `
+    <g class="network-node ${node.core ? 'core' : ''}" data-id="${node.id}" transform="translate(${node.x} ${node.y})">
+      <circle r="${node.r}"></circle>
+      <text>${node.id}</text>
+    </g>
+  `).join('');
+  nodeLayer.querySelectorAll('.network-node').forEach(nodeEl => {
+    nodeEl.addEventListener('pointerdown', startNodeDrag);
+  });
 }
 
-function beginCubeDrag(event) {
-  if (event.target.closest('.cube-controls')) return;
-  cubeDragging = true;
-  cubeLastX = event.clientX;
-  cubeLastY = event.clientY;
-  cubeStage.classList.add('dragging');
-  if (event.pointerId !== undefined && cubeStage.setPointerCapture) {
-    cubeStage.setPointerCapture(event.pointerId);
+function svgPoint(event) {
+  const point = networkSvg.createSVGPoint();
+  point.x = event.clientX;
+  point.y = event.clientY;
+  return point.matrixTransform(networkSvg.getScreenCTM().inverse());
+}
+
+function startNodeDrag(event) {
+  activeNode = nodes.find(node => node.id === event.currentTarget.dataset.id);
+  event.currentTarget.classList.add('dragging');
+  networkSvg.setPointerCapture?.(event.pointerId);
+}
+
+function moveNode(event) {
+  if (!activeNode) return;
+  const point = svgPoint(event);
+  activeNode.x = Math.max(activeNode.r + 18, Math.min(900 - activeNode.r - 18, point.x));
+  activeNode.y = Math.max(activeNode.r + 18, Math.min(420 - activeNode.r - 18, point.y));
+  drawNetwork();
+}
+
+function stopNodeDrag(event) {
+  if (!activeNode) return;
+  activeNode = null;
+  networkSvg.querySelectorAll('.network-node').forEach(node => node.classList.remove('dragging'));
+  if (event.pointerId !== undefined && networkSvg.hasPointerCapture?.(event.pointerId)) {
+    networkSvg.releasePointerCapture(event.pointerId);
   }
-  cube.classList.add('paused');
-  updateCubeTransform();
 }
 
-function moveCubeDrag(event) {
-  if (!cubeDragging) return;
-  const dx = event.clientX - cubeLastX;
-  const dy = event.clientY - cubeLastY;
-  cubeRotY += dx * 0.55;
-  cubeRotX -= dy * 0.55;
-  cubeRotX = Math.max(-75, Math.min(75, cubeRotX));
-  cubeLastX = event.clientX;
-  cubeLastY = event.clientY;
-  updateCubeTransform();
-}
-
-function stopCubeDrag(event) {
-  if (!cubeDragging) return;
-  cubeDragging = false;
-  cubeStage.classList.remove('dragging');
-  if (event.pointerId !== undefined && cubeStage.hasPointerCapture(event.pointerId)) {
-    cubeStage.releasePointerCapture(event.pointerId);
-  }
-}
-
-if (window.PointerEvent) {
-  cubeStage.addEventListener('pointerdown', beginCubeDrag);
-  cubeStage.addEventListener('pointermove', moveCubeDrag);
-  cubeStage.addEventListener('pointerup', stopCubeDrag);
-  cubeStage.addEventListener('pointercancel', stopCubeDrag);
-} else {
-  cubeStage.addEventListener('mousedown', beginCubeDrag);
-  window.addEventListener('mousemove', moveCubeDrag);
-  window.addEventListener('mouseup', stopCubeDrag);
-}
-cubeStage.addEventListener('wheel', event => {
-  event.preventDefault();
-  cubeScale += event.deltaY > 0 ? -0.08 : 0.08;
-  cubeScale = Math.max(0.65, Math.min(1.65, cubeScale));
-  cube.classList.add('paused');
-  updateCubeTransform();
-}, { passive: false });
-
-document.getElementById('pause-cube').addEventListener('click', e => {
-  cube.classList.toggle('paused');
-  e.currentTarget.innerHTML = cube.classList.contains('paused') ? '<i class="fa-solid fa-play"></i> Resume' : '<i class="fa-solid fa-pause"></i> Pause';
-  if (!cube.classList.contains('paused')) {
-    cube.style.transform = '';
-    cube.style.animation = '';
-  }
+drawNetwork();
+networkSvg.addEventListener('pointermove', moveNode);
+networkSvg.addEventListener('pointerup', stopNodeDrag);
+networkSvg.addEventListener('pointercancel', stopNodeDrag);
+document.getElementById('reset-network').addEventListener('click', () => {
+  nodes = initialNodes.map(node => ({ ...node }));
+  document.querySelector('.network-card').classList.remove('pulsing');
+  drawNetwork();
 });
-document.getElementById('wire-cube').addEventListener('click', () => cube.classList.toggle('wireframe'));
-document.getElementById('reset-cube').addEventListener('click', () => {
-  cube.classList.remove('paused', 'wireframe');
-  cubeRotX = -18;
-  cubeRotY = 0;
-  cubeScale = 1;
-  cube.style.transform = '';
-  cube.style.animation = 'none';
-  cube.offsetHeight;
-  cube.style.animation = '';
-  document.getElementById('pause-cube').innerHTML = '<i class="fa-solid fa-pause"></i> Pause';
+document.getElementById('pulse-network').addEventListener('click', () => {
+  document.querySelector('.network-card').classList.toggle('pulsing');
 });
 function attachDemoCardMotion() {
   document.querySelectorAll('.demo-card').forEach(card => {
