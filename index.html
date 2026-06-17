@@ -100,6 +100,10 @@
     .skill-logo { display: grid; place-items: center; width: clamp(38px, 4.2vw, 56px); height: clamp(38px, 4.2vw, 56px); flex: 0 0 auto; filter: drop-shadow(0 0 10px rgba(130,220,255,.14)); }
     .skill-logo img { width: 100%; height: 100%; object-fit: contain; }
     .skill-logo img.invert-logo { filter: invert(1) grayscale(1) brightness(1.4); }
+    .skills-actions { display: flex; justify-content: center; margin-top: 48px; }
+    .skills-view-all { display: inline-flex; align-items: center; gap: 10px; padding: 13px 24px; border: 1px solid rgba(255,255,255,.28); border-radius: 999px; color: #fff; background: rgba(6,18,37,.58); text-decoration: none; font-size: .78rem; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; box-shadow: 0 14px 36px rgba(0,0,0,.24), inset 0 1px 0 rgba(255,255,255,.08); transition: transform .22s, border-color .22s, background .22s; }
+    .skills-view-all:hover { transform: translateY(-3px); border-color: rgba(255,255,255,.56); background: rgba(255,255,255,.1); }
+    .skills-view-all svg { width: 17px; height: 17px; }
     #tech-stack { overflow: hidden; padding-top: 76px; }
     .tech-stack-content { max-width: 980px; margin: -8px auto 0; position: relative; }
     .tech-stack-copy { position: relative; z-index: 3; width: min(720px, 84%); margin: 0 auto; text-align: center; text-shadow: 0 2px 12px rgba(0,0,0,.72); }
@@ -107,14 +111,14 @@
     .tech-stack-text { max-width: 720px; margin: 0 auto; color: var(--muted); font-size: clamp(.98rem, 1.35vw, 1.12rem); line-height: 1.75; font-weight: 500; }
     .tech-orbit-stage { position: relative; z-index: 2; min-height: clamp(340px, 38vw, 430px); overflow: visible; display: grid; place-items: center; perspective: 900px; }
     .tech-orbit-stage::before { content: ''; position: absolute; left: 50%; top: 50%; width: min(60vw, 560px); height: min(32vw, 280px); transform: translate(-50%, -50%); border-radius: 50%; background: radial-gradient(ellipse, rgba(120,220,255,.16), rgba(120,220,255,.05) 42%, transparent 70%); filter: blur(2px); }
-    .tech-arc { --arc-size: clamp(470px, 57vw, 690px); --node-radius: calc(var(--arc-size) * .5); position: absolute; left: 50%; top: 50%; width: var(--arc-size); aspect-ratio: 1; transform: translate(-50%, -50%) rotate(31deg) scaleY(.36); border-radius: 50%; border: 1px solid rgba(150,220,255,.34); filter: drop-shadow(0 0 18px rgba(90,200,255,.16)); z-index: 4; pointer-events: none; }
-    .tech-arc.inner { --arc-size: clamp(450px, 54vw, 650px); --node-radius: calc(var(--arc-size) * .5); transform: translate(-50%, -50%) rotate(-31deg) scaleY(.36); border-color: rgba(255,255,255,.28); opacity: .88; }
-    .tech-node { position: absolute; left: 50%; top: 50%; width: 42px; height: 42px; margin: -21px; display: grid; place-items: center; border-radius: 50%; background: rgba(2,8,23,.9); border: 1px solid rgba(180,230,255,.22); color: #fff; font-family: 'Roboto', Arial, sans-serif; font-size: .64rem; font-weight: 900; letter-spacing: .2px; box-shadow: 0 10px 24px rgba(0,0,0,.26), inset 0 1px 0 rgba(255,255,255,.12), 0 0 18px rgba(120,220,255,.13); transform: rotate(var(--angle)) translateX(var(--node-radius)) rotate(calc(-1 * var(--angle))) scaleY(2.78); }
+    .tech-arc { --arc-size: clamp(420px, 51vw, 610px); --node-radius: calc(var(--arc-size) * .5); position: absolute; left: 50%; top: 50%; width: var(--arc-size); aspect-ratio: 1; transform: translate(-50%, -50%) rotate(31deg) scaleY(.36); border-radius: 50%; border: 1px solid rgba(150,220,255,.28); filter: drop-shadow(0 0 18px rgba(90,200,255,.13)); z-index: 4; pointer-events: none; }
+    .tech-arc.inner { --arc-size: clamp(400px, 48vw, 570px); --node-radius: calc(var(--arc-size) * .5); transform: translate(-50%, -50%) rotate(-31deg) scaleY(.36); border-color: rgba(255,255,255,.22); opacity: .82; }
+    .tech-node { position: absolute; left: 50%; top: 50%; width: 42px; height: 42px; margin: -21px; display: grid; place-items: center; border-radius: 50%; background: rgba(2,8,23,.62); border: 1px solid rgba(180,230,255,.16); color: rgba(255,255,255,.72); font-family: 'Roboto', Arial, sans-serif; font-size: .64rem; font-weight: 900; letter-spacing: .2px; opacity: .68; box-shadow: 0 10px 24px rgba(0,0,0,.2), inset 0 1px 0 rgba(255,255,255,.08), 0 0 16px rgba(120,220,255,.09); transform: rotate(var(--angle)) translateX(var(--node-radius)) rotate(calc(-1 * var(--angle))) scaleY(2.78); }
     .tech-node img { width: 68%; height: 68%; object-fit: contain; }
     .tech-node > img, .tech-node > .tech-label { display: block; }
     .tech-arc.outer .tech-node { animation: techNodeOrbitForward 24s linear infinite; }
     .tech-arc.inner .tech-node { animation: techNodeOrbitReverse 28s linear infinite; }
-    .tech-node .invert-logo, .tech-node img.invert-logo { filter: invert(1) grayscale(1) brightness(1.5); }
+    .tech-node .invert-logo, .tech-node img.invert-logo { filter: invert(1) grayscale(1) brightness(1.35); }
     .tech-arc.inner .tech-node { width: 38px; height: 38px; margin: -19px; font-size: .58rem; }
 
     .timeline { position: relative; padding-left: 54px; }
@@ -169,6 +173,30 @@
     .contact-label { display: block; color: var(--accent3); font-size: clamp(1.05rem, 2.1vw, 1.55rem); line-height: 1.1; font-weight: 800; margin-bottom: 12px; letter-spacing: 0; }
     .contact-value { display: flex; align-items: center; gap: 14px; color: #fff; font-size: clamp(1.15rem, 2.45vw, 1.85rem); line-height: 1.18; font-weight: 900; letter-spacing: 0; }
     .linkedin-mark { display: inline-grid; place-items: center; width: clamp(28px, 3.6vw, 42px); height: clamp(28px, 3.6vw, 42px); border-radius: 4px; background: #2d6cdf; color: #041024; font-weight: 900; font-size: clamp(1rem, 2.1vw, 1.65rem); line-height: 1; flex: 0 0 auto; }
+
+    .ai-chat { position: fixed; right: 24px; bottom: 24px; z-index: 150; font-family: 'Roboto', Arial, sans-serif; }
+    .ai-chat-toggle { width: 58px; height: 58px; border: 1px solid rgba(180,230,255,.32); border-radius: 50%; display: grid; place-items: center; background: radial-gradient(circle at 32% 24%, rgba(255,255,255,.22), rgba(42,122,210,.24) 34%, rgba(2,8,23,.94) 76%); color: #fff; cursor: pointer; box-shadow: 0 18px 42px rgba(0,0,0,.36), 0 0 26px rgba(80,190,255,.22), inset 0 1px 0 rgba(255,255,255,.16); transition: transform .22s, border-color .22s, box-shadow .22s; }
+    .ai-chat-toggle:hover { transform: translateY(-3px) scale(1.04); border-color: rgba(210,245,255,.56); box-shadow: 0 22px 48px rgba(0,0,0,.42), 0 0 34px rgba(80,190,255,.3), inset 0 1px 0 rgba(255,255,255,.18); }
+    .ai-chat-toggle svg { width: 26px; height: 26px; }
+    .ai-chat-panel { position: absolute; right: 0; bottom: 76px; width: min(370px, calc(100vw - 32px)); height: min(520px, calc(100vh - 118px)); display: grid; grid-template-rows: auto 1fr auto; overflow: hidden; border: 1px solid rgba(180,230,255,.22); border-radius: 18px; background: linear-gradient(155deg, rgba(6,18,37,.96), rgba(2,8,23,.96)); box-shadow: 0 28px 80px rgba(0,0,0,.46), 0 0 32px rgba(75,180,255,.14), inset 0 1px 0 rgba(255,255,255,.08); opacity: 0; pointer-events: none; transform: translateY(14px) scale(.96); transform-origin: bottom right; transition: opacity .22s, transform .22s; }
+    .ai-chat.open .ai-chat-panel { opacity: 1; pointer-events: auto; transform: translateY(0) scale(1); }
+    .ai-chat-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 18px; border-bottom: 1px solid rgba(255,255,255,.1); background: rgba(255,255,255,.035); }
+    .ai-chat-title { display: flex; flex-direction: column; gap: 3px; }
+    .ai-chat-title strong { color: #fff; font-size: .95rem; font-weight: 900; letter-spacing: .3px; }
+    .ai-chat-title span { color: var(--accent3); font-size: .72rem; font-weight: 700; }
+    .ai-chat-close { width: 32px; height: 32px; border: 1px solid rgba(255,255,255,.12); border-radius: 50%; background: rgba(255,255,255,.04); color: #fff; cursor: pointer; font-size: 1.1rem; line-height: 1; }
+    .ai-chat-messages { padding: 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; scrollbar-width: thin; scrollbar-color: rgba(150,220,255,.42) transparent; }
+    .ai-message { max-width: 88%; padding: 11px 13px; border-radius: 14px; font-size: .86rem; line-height: 1.55; color: #f7f7f7; white-space: pre-line; }
+    .ai-message.bot { align-self: flex-start; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.08); border-bottom-left-radius: 5px; }
+    .ai-message.user { align-self: flex-end; background: rgba(82,165,255,.18); border: 1px solid rgba(130,210,255,.18); border-bottom-right-radius: 5px; }
+    .ai-chat-prompts { display: flex; flex-wrap: wrap; gap: 8px; padding: 0 16px 12px; }
+    .ai-prompt { border: 1px solid rgba(180,230,255,.18); border-radius: 999px; background: rgba(255,255,255,.04); color: #dcdcdc; padding: 7px 10px; font: inherit; font-size: .72rem; font-weight: 800; cursor: pointer; transition: color .2s, border-color .2s, background .2s; }
+    .ai-prompt:hover { color: #fff; border-color: rgba(180,230,255,.44); background: rgba(255,255,255,.08); }
+    .ai-chat-form { display: flex; gap: 10px; padding: 14px; border-top: 1px solid rgba(255,255,255,.1); background: rgba(2,8,23,.78); }
+    .ai-chat-input { min-width: 0; flex: 1; border: 1px solid rgba(255,255,255,.12); border-radius: 999px; background: rgba(255,255,255,.045); color: #fff; padding: 11px 14px; font: inherit; font-size: .86rem; outline: none; }
+    .ai-chat-input:focus { border-color: rgba(150,220,255,.46); box-shadow: 0 0 0 3px rgba(100,190,255,.08); }
+    .ai-chat-send { width: 42px; height: 42px; border: 1px solid rgba(180,230,255,.26); border-radius: 50%; background: rgba(255,255,255,.08); color: #fff; cursor: pointer; display: grid; place-items: center; }
+    .ai-chat-send svg { width: 18px; height: 18px; }
 
     footer { position: relative; z-index: 2; text-align: center; padding: 32px; border-top: 1px solid var(--border); font-family: 'Roboto', Arial, sans-serif; font-size: 0.72rem; color: var(--muted); letter-spacing: 2px; }
 
@@ -237,6 +265,9 @@
       .hero-stat-number { font-size: 1.25rem; }
       .hero-stat-label { font-size: .56rem; letter-spacing: .7px; }
       #terminal-wrap { --visual-opacity: .34; width: 250px; right: -92px; top: 228px; }
+      .ai-chat { right: 16px; bottom: 16px; }
+      .ai-chat-toggle { width: 54px; height: 54px; }
+      .ai-chat-panel { bottom: 70px; }
     }
     @media (max-width: 780px) {
       .nav-links { display: none; }
@@ -270,15 +301,15 @@
     <p class="hero-overview-text hero-overview-extra">Beyond work, I enjoy building random ideas, learning new technologies, and turning "what if?" into actual projects.</p>
     <div class="hero-stats">
       <div class="hero-stat">
-        <span class="hero-stat-number">2</span>
+        <span class="hero-stat-number" data-count="2" data-duration="5200">1</span>
         <span class="hero-stat-label">Internships</span>
       </div>
       <div class="hero-stat">
-        <span class="hero-stat-number">10+</span>
+        <span class="hero-stat-number" data-count="10" data-suffix="+" data-duration="5200">1</span>
         <span class="hero-stat-label">Projects Built</span>
       </div>
       <div class="hero-stat">
-        <span class="hero-stat-number">250+</span>
+        <span class="hero-stat-number" data-count="250" data-suffix="+" data-duration="3400">1</span>
         <span class="hero-stat-label">Devices Automated</span>
       </div>
     </div>
@@ -445,6 +476,12 @@ service.scale()</pre></div>
       </div>
     </div>
   </div>
+  <div class="skills-actions reveal">
+    <a class="skills-view-all" href="skills.html" aria-label="View all skills">
+      View All
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+    </a>
+  </div>
 </section>
 
 <!-- PROJECTS -->
@@ -505,7 +542,7 @@ service.scale()</pre></div>
   <div class="tech-stack-content reveal">
     <div class="tech-orbit-stage" aria-label="Animated tech stack logos">
       <div class="tech-stack-copy">
-        <p class="tech-stack-text">Building intelligent applications with AI, machine learning, and scalable backend systems. Experienced in LLMs, NLP, RAG pipelines, cloud infrastructure, and full-stack development.</p>
+        <p class="tech-stack-text">Building intelligent applications with AI, machine learning, and scalable backend systems. Experienced in developing LLM-powered solutions, NLP workflows, RAG pipelines, and cloud-native applications. Passionate about transforming complex ideas into production-ready products that deliver real-world impact.</p>
       </div>
       <div class="tech-arc outer" aria-hidden="true">
         <span class="tech-node" style="--angle: 0deg;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="" /></span>
@@ -589,6 +626,34 @@ service.scale()</pre></div>
   </div>
 </section>
 
+<div class="ai-chat" id="ai-chat">
+  <div class="ai-chat-panel" role="dialog" aria-label="AI assistant chat">
+    <div class="ai-chat-header">
+      <div class="ai-chat-title">
+        <strong>AI Assistant</strong>
+        <span>Ask About Arleen</span>
+      </div>
+      <button class="ai-chat-close" type="button" aria-label="Close chat">×</button>
+    </div>
+    <div class="ai-chat-messages" id="ai-chat-messages" aria-live="polite"></div>
+    <div class="ai-chat-prompts">
+      <button class="ai-prompt" type="button">Experience</button>
+      <button class="ai-prompt" type="button">Projects</button>
+      <button class="ai-prompt" type="button">Skills</button>
+      <button class="ai-prompt" type="button">Contact</button>
+    </div>
+    <form class="ai-chat-form" id="ai-chat-form">
+      <input class="ai-chat-input" id="ai-chat-input" type="text" placeholder="Ask anything about me..." autocomplete="off" />
+      <button class="ai-chat-send" type="submit" aria-label="Send message">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+      </button>
+    </form>
+  </div>
+  <button class="ai-chat-toggle" type="button" aria-label="Open AI assistant">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c4.4 0 8 2.9 8 6.5S16.4 16 12 16a9.8 9.8 0 0 1-2-.2L5 20l1.1-4A6.2 6.2 0 0 1 4 9.5C4 5.9 7.6 3 12 3Z"/><path d="M8.5 9.5h.01"/><path d="M12 9.5h.01"/><path d="M15.5 9.5h.01"/></svg>
+  </button>
+</div>
+
 <script>
 /* STARFIELD */
 (function(){
@@ -626,6 +691,116 @@ const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});
 },{threshold:0.1});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+/* ABOUT STAT COUNT-UP */
+const aboutStats = document.querySelector('.hero-stats');
+function animateAboutStats() {
+  document.querySelectorAll('.hero-stat-number[data-count]').forEach(el => {
+    const end = Number(el.dataset.count);
+    const suffix = el.dataset.suffix || '';
+    const duration = Number(el.dataset.duration) || 3400;
+    const startTime = performance.now();
+    el.textContent = `1${suffix}`;
+
+    function tick(now) {
+      const progress = Math.min((now - startTime) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const value = progress >= 1 ? end : Math.min(end, Math.max(1, Math.floor(1 + (end - 1) * eased)));
+      el.textContent = `${value}${suffix}`;
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+
+    requestAnimationFrame(tick);
+  });
+}
+if (aboutStats) {
+  const statsObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) animateAboutStats();
+    });
+  }, { threshold: .6 });
+  statsObserver.observe(aboutStats);
+  window.addEventListener('pageshow', event => {
+    if (event.persisted) animateAboutStats();
+  });
+}
+
+/* AI ASSISTANT */
+const chatRoot = document.getElementById('ai-chat');
+const chatToggle = chatRoot?.querySelector('.ai-chat-toggle');
+const chatClose = chatRoot?.querySelector('.ai-chat-close');
+const chatMessages = document.getElementById('ai-chat-messages');
+const chatForm = document.getElementById('ai-chat-form');
+const chatInput = document.getElementById('ai-chat-input');
+const chatPrompts = document.querySelectorAll('.ai-prompt');
+let chatWelcomed = false;
+
+const profileAnswers = {
+  overview: 'Arleen Kaur Teerthy is a Software & AI/ML Engineer and Computer Science student at Arizona State University. She builds software, AI-powered applications, automation systems, full-stack products, and cloud-backed tools that solve real-world problems.',
+  stats: 'Quick stats: 2 internships, 10+ projects built, and 250+ devices automated.',
+  education: 'Arleen studies Computer Science at Arizona State University.',
+  experience: 'Experience highlights:\n\n1. Software & Systems Automation Engineer, Engineering Technical Services, Jun 2025 - Present: CI/CD automation for 250+ machines, 60% faster provisioning, 99.9% uptime, reusable Git/GitHub Actions configuration library.\n\n2. ML Software Engineering Intern, Abundant Harvest Aquaponics, Aug 2025 - May 2026: AI/ML inference pipeline with Python, TensorFlow, and FastAPI, real-time predictive analytics, production monitoring, optimized SQL, and 85%+ Jest test coverage.\n\n3. Fintech Software Analyst, Engineering Technical Services, Mar 2023 - Jun 2025: Python automation with Salesforce REST APIs processing 500+ records monthly and improving operational efficiency.\n\n4. Software Engineer Intern, Paradise Movers, Aug 2024 - Jan 2025: full-stack Node/Express web app, REST APIs, Vercel deployment, mobile-first booking flow.',
+  projects: 'Featured projects:\n\nDocuMind: RAG-powered document Q&A using Python, FastAPI, LangChain, Groq, Pinecone, and React. Live: https://smart-doc-39g4x4l3o-ateerthy-7150s-projects.vercel.app/ GitHub: https://github.com/arleenkaur02/smart-doc-qa\n\nAidBridge: OHack AI nonprofit platform built with Next.js, FastAPI, Supabase, LangChain, Claude Vision, and pgvector. Live: https://25-kaur-two.vercel.app/ GitHub: https://github.com/arleenkaur02/AidBridge',
+  skills: 'Core skills include Python, PyTorch, TensorFlow, Scikit-learn, machine learning, deep learning, LLMs, LangChain, Hugging Face, FastAPI, REST APIs, microservices, RAG, NLP, vector embeddings, PostgreSQL, MongoDB, Pinecone/vector databases, React, and Next.js.',
+  certifications: 'Certifications and leadership include IBM Full Stack Software Developer, Google Cloud Cloud Developer Professional, Associate in Project Management, and VP of Finance for the Software Developers Association at ASU.',
+  contact: 'Contact Arleen:\nEmail: ateerthy@asu.edu\nPhone: +1 (623) 287-8937\nLinkedIn: https://www.linkedin.com/in/arleenkaurteerthy/\nGitHub: https://github.com/arleenkaur02',
+  links: 'Useful links:\nLinkedIn: https://www.linkedin.com/in/arleenkaurteerthy/\nGitHub: https://github.com/arleenkaur02\nDocuMind: https://smart-doc-39g4x4l3o-ateerthy-7150s-projects.vercel.app/\nAidBridge: https://25-kaur-two.vercel.app/\nAll skills page: skills.html'
+};
+
+function getAssistantReply(question) {
+  const q = question.toLowerCase();
+  if (/(email|mail|phone|linkedin|contact|reach|hire)/.test(q)) return profileAnswers.contact;
+  if (/(project|documind|aidbridge|github|live|website|repo)/.test(q)) return profileAnswers.projects;
+  if (/(skill|tech|stack|language|framework|ai|ml|machine|llm|rag|nlp|database|python|react|next)/.test(q)) return profileAnswers.skills;
+  if (/(experience|intern|work|job|automation|fintech|abundant|paradise|engineering technical)/.test(q)) return profileAnswers.experience;
+  if (/(cert|leadership|coursera|ibm|google|cloud|project management|vp)/.test(q)) return profileAnswers.certifications;
+  if (/(school|college|university|education|degree|asu)/.test(q)) return profileAnswers.education;
+  if (/(stat|number|how many|count|devices)/.test(q)) return profileAnswers.stats;
+  if (/(link|portfolio|social)/.test(q)) return profileAnswers.links;
+  if (/(who|about|summary|intro|tell me)/.test(q)) return profileAnswers.overview;
+  return `${profileAnswers.overview}\n\n${profileAnswers.stats}\n\nYou can ask me about Arleen's experience, projects, skills, certifications, or contact information.`;
+}
+window.getAssistantReply = getAssistantReply;
+
+function addChatMessage(text, type = 'bot') {
+  if (!chatMessages) return;
+  const bubble = document.createElement('div');
+  bubble.className = `ai-message ${type}`;
+  bubble.textContent = text;
+  chatMessages.appendChild(bubble);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+function openChat() {
+  if (!chatRoot) return;
+  chatRoot.classList.add('open');
+  if (!chatWelcomed) {
+    addChatMessage("Hi, I am Arleen's AI Assistant. Ask me about her experience, projects, skills, education, or contact details.");
+    chatWelcomed = true;
+  }
+  setTimeout(() => chatInput?.focus(), 80);
+}
+
+function askAssistant(text) {
+  const question = text.trim();
+  if (!question) return;
+  addChatMessage(question, 'user');
+  chatInput.value = '';
+  setTimeout(() => addChatMessage(getAssistantReply(question)), 180);
+}
+
+chatToggle?.addEventListener('click', () => {
+  if (chatRoot.classList.contains('open')) chatRoot.classList.remove('open');
+  else openChat();
+});
+chatClose?.addEventListener('click', () => chatRoot?.classList.remove('open'));
+chatForm?.addEventListener('submit', event => {
+  event.preventDefault();
+  askAssistant(chatInput.value);
+});
+chatPrompts.forEach(prompt => {
+  prompt.addEventListener('click', () => askAssistant(prompt.textContent));
+});
 
 /* PROJECT CARD MOTION */
 document.querySelectorAll('.project-card').forEach(card => {
