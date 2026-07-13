@@ -162,6 +162,7 @@
     .project-media { position: relative; height: clamp(150px, 15vw, 205px); border-radius: 8px; overflow: hidden; background: rgba(255,255,255,.04); margin-bottom: 18px; }
     .project-media img { width: 100%; height: 100%; object-fit: cover; object-position: 18% 18%; display: block; filter: saturate(.95) contrast(1.04) brightness(.84); transition: transform .5s, filter .35s; }
     .project-media img.pathpilot-shot { object-position: 10% 6%; }
+    .project-media img.foodflow-shot { object-position: 8% 12%; }
     .project-media img.documind-shot { object-position: 18% 32%; }
     .project-media img.power-lab-shot { object-position: 8% 12%; }
     .project-media img.aidbridge-shot { object-position: 8% 10%; }
@@ -548,6 +549,22 @@ service.scale()</pre></div>
     <div class="projects-grid" id="projects-track">
       <div class="project-card reveal">
       <div class="project-media">
+        <img class="foodflow-shot" src="assets/project-foodflow.png" alt="FoodFlow AI waste prevention operating system dashboard" />
+        <div class="project-actions">
+          <a class="project-action" href="https://github.com/arleenkaur02/foodflow-ai" target="_blank" rel="noopener noreferrer" aria-label="Open FoodFlow AI GitHub repository" title="GitHub repository">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.04c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.33-1.76-1.33-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.93.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 12 .5Z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="project-name">FoodFlow AI</div>
+      <div class="project-meta">Waste Prevention OS | Forecasts, Inventory, Pricing, Transfers</div>
+      <p class="project-desc">Built an AI-powered operations dashboard for preventing food waste with inventory intelligence, demand forecasting, pricing workflows, and transfer planning to help teams identify waste risk before it becomes loss.</p>
+      <div class="project-stack">
+        <span class="stack-tag">#AI</span><span class="stack-tag">#Operations</span><span class="stack-tag">#Forecasting</span><span class="stack-tag">#Inventory</span><span class="stack-tag">#Dashboard</span>
+      </div>
+    </div>
+      <div class="project-card reveal">
+      <div class="project-media">
         <img class="pathpilot-shot" src="assets/project-pathpilot.png" alt="PathPilot AI career copilot for students" />
       </div>
       <div class="project-name">PathPilot AI</div>
@@ -850,11 +867,11 @@ const profileAnswers = {
   stats: 'Quick stats: 2 internships, 10+ projects built, and 250+ devices automated.',
   education: 'Arleen studies Computer Science at Arizona State University.',
   experience: 'Experience highlights:\n\n1. Software & Systems Automation Engineer, Engineering Technical Services, Jun 2025 - Present: CI/CD automation for 250+ machines, 60% faster provisioning, 99.9% uptime, reusable Git/GitHub Actions configuration library.\n\n2. ML Software Engineering Intern, Abundant Harvest Aquaponics, Aug 2025 - May 2026: AI/ML inference pipeline with Python, TensorFlow, and FastAPI, real-time predictive analytics, production monitoring, optimized SQL, and 85%+ Jest test coverage.\n\n3. Fintech Software Analyst, Engineering Technical Services, Mar 2023 - Jun 2025: Python automation with Salesforce REST APIs processing 500+ records monthly and improving operational efficiency.\n\n4. Software Engineer Intern, Paradise Movers, Aug 2024 - Jan 2025: full-stack Node/Express web app, REST APIs, Vercel deployment, mobile-first booking flow.',
-  projects: 'Featured projects:\n\nPathPilot AI: AI career copilot for students that turns a resume and internship link into resume fixes, ATS scoring, missing keyword analysis, outreach messaging, and interview preparation guidance.\n\n5G Power Lab: Interactive 5G/LTE power consumption visualizer for exploring wireless signal conditions, usage profiles, and device energy behavior. Live: https://fiveg-power-lab.onrender.com/ GitHub: https://github.com/arleenkaur02/5g-power-lab\n\nDocuMind: RAG-powered document Q&A using Python, FastAPI, LangChain, Groq, Pinecone, and React. Live: https://smart-doc-39g4x4l3o-ateerthy-7150s-projects.vercel.app/ GitHub: https://github.com/arleenkaur02/smart-doc-qa\n\nAidBridge: OHack AI nonprofit platform built with Next.js, FastAPI, Supabase, LangChain, Claude Vision, and pgvector. Live: https://25-kaur-two.vercel.app/ GitHub: https://github.com/arleenkaur02/AidBridge',
+  projects: 'Featured projects:\n\nFoodFlow AI: AI-powered waste prevention OS for inventory intelligence, demand forecasting, pricing workflows, and transfer planning. GitHub: https://github.com/arleenkaur02/foodflow-ai\n\nPathPilot AI: AI career copilot for students that turns a resume and internship link into resume fixes, ATS scoring, missing keyword analysis, outreach messaging, and interview preparation guidance.\n\n5G Power Lab: Interactive 5G/LTE power consumption visualizer for exploring wireless signal conditions, usage profiles, and device energy behavior. Live: https://fiveg-power-lab.onrender.com/ GitHub: https://github.com/arleenkaur02/5g-power-lab\n\nDocuMind: RAG-powered document Q&A using Python, FastAPI, LangChain, Groq, Pinecone, and React. Live: https://smart-doc-39g4x4l3o-ateerthy-7150s-projects.vercel.app/ GitHub: https://github.com/arleenkaur02/smart-doc-qa\n\nAidBridge: OHack AI nonprofit platform built with Next.js, FastAPI, Supabase, LangChain, Claude Vision, and pgvector. Live: https://25-kaur-two.vercel.app/ GitHub: https://github.com/arleenkaur02/AidBridge',
   skills: 'Core skills include Python, PyTorch, TensorFlow, Scikit-learn, machine learning, deep learning, LLMs, LangChain, Hugging Face, FastAPI, REST APIs, microservices, RAG, NLP, vector embeddings, PostgreSQL, MongoDB, Pinecone/vector databases, React, and Next.js.',
   certifications: 'Certifications and leadership include IBM Full Stack Software Developer, Google Cloud Cloud Developer Professional, Associate in Project Management, and VP of Finance for the Software Developers Association at ASU.',
   contact: 'Contact Arleen:\nEmail: ateerthy@asu.edu\nPhone: +1 (623) 287-8937\nLinkedIn: https://www.linkedin.com/in/arleenkaurteerthy/\nGitHub: https://github.com/arleenkaur02',
-  links: 'Useful links:\nLinkedIn: https://www.linkedin.com/in/arleenkaurteerthy/\nGitHub: https://github.com/arleenkaur02\n5G Power Lab: https://fiveg-power-lab.onrender.com/\nDocuMind: https://smart-doc-39g4x4l3o-ateerthy-7150s-projects.vercel.app/\nAidBridge: https://25-kaur-two.vercel.app/\nAll skills page: skills.html'
+  links: 'Useful links:\nLinkedIn: https://www.linkedin.com/in/arleenkaurteerthy/\nGitHub: https://github.com/arleenkaur02\nFoodFlow AI: https://github.com/arleenkaur02/foodflow-ai\n5G Power Lab: https://fiveg-power-lab.onrender.com/\nDocuMind: https://smart-doc-39g4x4l3o-ateerthy-7150s-projects.vercel.app/\nAidBridge: https://25-kaur-two.vercel.app/\nAll skills page: skills.html'
 };
 
 function getAssistantReply(question) {
