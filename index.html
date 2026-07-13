@@ -193,10 +193,10 @@
     .cert-date { font-size: 0.72rem; color: var(--muted); margin-top: 3px; }
 
     #contact { min-height: auto; padding-bottom: 100px; align-items: stretch; }
-    #contact .section-header { display: grid; grid-template-columns: auto minmax(280px, 380px); align-items: start; justify-content: space-between; gap: clamp(24px, 5vw, 64px); text-align: left; width: min(1180px, 100%); margin-left: auto; margin-right: auto; padding-left: clamp(28px, 5vw, 52px); padding-right: clamp(28px, 5vw, 52px); }
+    #contact .section-header { align-items: flex-start; text-align: left; width: min(1180px, 100%); margin: 0 auto 10px; padding-left: clamp(28px, 5vw, 52px); padding-right: clamp(28px, 5vw, 52px); }
     #contact .section-line { background: linear-gradient(90deg, var(--border), transparent); }
-    #contact .section-line { grid-column: 1 / -1; width: 100%; }
-    .contact-message-box { justify-self: end; width: min(100%, 380px); display: grid; gap: 10px; padding: 17px; border-radius: 10px; border: 1px solid rgba(180,230,255,.18); background: linear-gradient(145deg, rgba(255,255,255,.06), rgba(255,255,255,.025)); box-shadow: 0 20px 46px rgba(0,0,0,.2), 0 0 28px rgba(70,180,255,.08), inset 0 1px 0 rgba(255,255,255,.08); }
+    #contact .section-line { width: 100%; }
+    .contact-message-box { justify-self: end; align-self: start; width: min(100%, 390px); display: grid; gap: 10px; padding: 17px; border-radius: 10px; border: 1px solid rgba(180,230,255,.18); background: linear-gradient(145deg, rgba(255,255,255,.06), rgba(255,255,255,.025)); box-shadow: 0 20px 46px rgba(0,0,0,.2), 0 0 28px rgba(70,180,255,.08), inset 0 1px 0 rgba(255,255,255,.08); }
     .contact-form-title { color: #fff; font-size: .88rem; line-height: 1; font-weight: 900; letter-spacing: .8px; text-transform: uppercase; }
     .contact-field { display: grid; gap: 5px; }
     .contact-field span { color: var(--accent3); font-size: .7rem; font-weight: 800; letter-spacing: .8px; text-transform: uppercase; }
@@ -208,13 +208,12 @@
     .contact-field textarea:focus { border-color: rgba(126,231,255,.5); box-shadow: 0 0 0 3px rgba(93,205,255,.08); background: rgba(1,11,29,.82); }
     .contact-submit { width: max-content; border: 1px solid rgba(180,230,255,.28); border-radius: 999px; background: rgba(255,255,255,.08); color: #fff; padding: 9px 18px; font: inherit; font-size: .78rem; font-weight: 900; letter-spacing: .8px; text-transform: uppercase; cursor: pointer; transition: transform .2s, border-color .2s, background .2s; }
     .contact-submit:hover { transform: translateY(-2px); border-color: rgba(180,230,255,.5); background: rgba(255,255,255,.13); }
-    .contact-inner { width: min(1180px, 100%); margin: 0 auto; padding: clamp(28px, 5vw, 52px); border-radius: 8px; background: rgba(2,8,23,.74); box-shadow: 0 26px 70px rgba(0,0,0,.24), inset 0 1px 0 rgba(255,255,255,.04); text-align: left; display: grid; grid-template-columns: minmax(290px, .82fr) minmax(360px, 1fr); gap: clamp(34px, 6vw, 82px); align-items: center; }
+    .contact-inner { width: min(1180px, 100%); margin: 0 auto; padding: clamp(24px, 4vw, 42px) clamp(28px, 5vw, 52px); border-radius: 8px; background: rgba(2,8,23,.74); box-shadow: 0 26px 70px rgba(0,0,0,.24), inset 0 1px 0 rgba(255,255,255,.04); text-align: left; display: grid; grid-template-columns: minmax(290px, 1fr) minmax(320px, 390px); gap: clamp(24px, 5vw, 58px); align-items: start; }
     .contact-list { display: flex; flex-direction: column; gap: clamp(24px, 4vw, 38px); }
     .contact-item { display: block; color: inherit; text-decoration: none; }
     .contact-label { display: block; color: var(--accent3); font-size: clamp(1.05rem, 2.1vw, 1.55rem); line-height: 1.1; font-weight: 800; margin-bottom: 12px; letter-spacing: 0; }
     .contact-value { display: flex; align-items: center; gap: 14px; color: #fff; font-size: clamp(1.15rem, 2.45vw, 1.85rem); line-height: 1.18; font-weight: 900; letter-spacing: 0; }
     .linkedin-mark { display: inline-grid; place-items: center; width: clamp(28px, 3.6vw, 42px); height: clamp(28px, 3.6vw, 42px); border-radius: 4px; background: #2d6cdf; color: #041024; font-weight: 900; font-size: clamp(1rem, 2.1vw, 1.65rem); line-height: 1; flex: 0 0 auto; }
-    .contact-map { position: relative; width: 100%; min-height: clamp(300px, 34vw, 420px); background: transparent; border: 0; box-shadow: none; }
 
     .ai-chat { position: fixed; right: 24px; bottom: 24px; z-index: 150; font-family: 'Roboto', Arial, sans-serif; }
     .ai-chat-toggle { width: 58px; height: 58px; border: 1px solid rgba(180,230,255,.32); border-radius: 50%; display: grid; place-items: center; background: radial-gradient(circle at 32% 24%, rgba(255,255,255,.22), rgba(42,122,210,.24) 34%, rgba(2,8,23,.94) 76%); color: #fff; cursor: pointer; box-shadow: 0 18px 42px rgba(0,0,0,.36), 0 0 26px rgba(80,190,255,.22), inset 0 1px 0 rgba(255,255,255,.16); transition: transform .22s, border-color .22s, box-shadow .22s; }
@@ -281,8 +280,7 @@
       section { padding: 72px 6vw; }
       #hero { padding-right: 6vw; }
       #terminal-wrap { --visual-opacity: .58; width: min(54vw, 350px); right: -58px; top: 31%; }
-      .contact-inner { grid-template-columns: minmax(245px, .85fr) minmax(230px, 1fr); gap: 24px; }
-      .contact-map { min-height: 300px; }
+      .contact-inner { grid-template-columns: minmax(245px, .85fr) minmax(260px, 1fr); gap: 24px; }
       .tech-stack-copy { width: min(620px, 82%); }
       .tech-orbit-stage { min-height: 360px; }
       .skills-marquees { gap: 34px; }
@@ -311,14 +309,13 @@
       .hero-stat-number { font-size: 1.25rem; }
       .hero-stat-label { font-size: .56rem; letter-spacing: .7px; }
       #terminal-wrap { --visual-opacity: .34; width: 250px; right: -92px; top: 228px; }
-      .contact-inner { grid-template-columns: minmax(160px, .9fr) minmax(150px, 1fr); gap: 14px; padding: 18px; }
-      #contact .section-header { grid-template-columns: 1fr; padding-left: 18px; padding-right: 18px; }
+      .contact-inner { grid-template-columns: 1fr; gap: 22px; padding: 18px; }
+      #contact .section-header { padding-left: 18px; padding-right: 18px; margin-bottom: 8px; }
       .contact-message-box { justify-self: start; width: 100%; }
       .contact-list { gap: 20px; }
       .contact-label { font-size: clamp(.78rem, 3vw, 1rem); margin-bottom: 8px; }
       .contact-value { gap: 8px; font-size: clamp(.86rem, 3.7vw, 1.15rem); }
       .linkedin-mark { width: 28px; height: 28px; font-size: 1rem; }
-      .contact-map { min-height: 230px; }
       .ai-chat { right: 16px; bottom: 16px; }
       .ai-chat-toggle { width: 54px; height: 54px; }
       .ai-chat-panel { bottom: 70px; }
@@ -712,22 +709,6 @@ service.scale()</pre></div>
 <section id="contact">
   <div class="section-header reveal">
     <h2 class="section-title">Get In Touch</h2>
-    <form class="contact-message-box" id="contact-message-form" aria-label="Send Arleen a message">
-      <div class="contact-form-title">Send a Message</div>
-      <label class="contact-field">
-        <span>Name</span>
-        <input type="text" name="name" placeholder="Your name" autocomplete="name" required />
-      </label>
-      <label class="contact-field">
-        <span>Email</span>
-        <input type="email" name="email" placeholder="your@email.com" autocomplete="email" required />
-      </label>
-      <label class="contact-field">
-        <span>Message</span>
-        <textarea name="message" rows="3" placeholder="Write your message..." required></textarea>
-      </label>
-      <button class="contact-submit" type="submit">Send</button>
-    </form>
     <div class="section-line"></div>
   </div>
   <div class="contact-inner reveal">
@@ -749,7 +730,22 @@ service.scale()</pre></div>
         <span class="contact-value"><span class="linkedin-mark">in</span> arleenkaurteerthy</span>
       </a>
     </div>
-    <div class="contact-map" aria-hidden="true"></div>
+    <form class="contact-message-box" id="contact-message-form" aria-label="Send Arleen a message">
+      <div class="contact-form-title">Send a Message</div>
+      <label class="contact-field">
+        <span>Name</span>
+        <input type="text" name="name" placeholder="Your name" autocomplete="name" required />
+      </label>
+      <label class="contact-field">
+        <span>Email</span>
+        <input type="email" name="email" placeholder="your@email.com" autocomplete="email" required />
+      </label>
+      <label class="contact-field">
+        <span>Message</span>
+        <textarea name="message" rows="3" placeholder="Write your message..." required></textarea>
+      </label>
+      <button class="contact-submit" type="submit">Send</button>
+    </form>
   </div>
 </section>
 
